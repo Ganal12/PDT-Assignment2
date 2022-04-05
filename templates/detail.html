@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+{% if article %}
+{{ article[0] }}
+{% else %}
+Flask App
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+
+{% if article %}
+<div class="card mt-5">
+    <div class="card-header">
+        Blogs
+    </div>
+    <div class="card-body">
+        <h2 class="card-title">{{ article[0] }}</h2>
+        <h6 class="card-subtitle mb-2 text-muted">By: {{ article[2] }}</h6>
+        <p class="card-text">{{ article[1] }}</p>
+        <a href="{{ url_for('index') }}" class="btn btn-primary">Go Back</a>
+    </div>
+</div>
+{% else %}
+<div class="container">
+    <h1 class="display-2">Invalid Article</h1>
+    <hr class="my-4">
+    <blockquote class="blockquote mb-0">
+        <p>It seems there's something wrong or the page you're referring is not exist.</p>
+    </blockquote>
+    <a href="{{ url_for('index') }}" class="btn btn-primary">Go Back</a>
+</div>
+{% endif %}
+{% endblock %}
